@@ -1,0 +1,49 @@
+60  cd 03-Terraform-CLI/
+   61  ls
+   62  rm -rf terraform.tfstate* 
+   63  ls
+   64  ls -a 
+   65  ls
+   66  terraform init 
+   67  ls
+   68  ls -a 
+   69  cat .terraform.lock.hcl 
+   70  ls
+   71  ls -R .terraform
+   72  du -sh .terraform
+   73  ls
+   74  terraform validate 
+   75  vim main.tf 
+   76  terraform validate 
+   77  vim main.tf 
+   78  terraform plan 
+   79  vim main.tf 
+   80  ls
+   81  terraform plan 
+   82  ls
+   83  vim main.tf 
+   84  cat main.tf 
+   85  terraform fmt
+   86  cat main.tf 
+   87  ls
+   88  terraform plan 
+   89  terraform apply 
+   90  terraform plan -out build-plan 
+   91  ls
+   92  file build-plan 
+   93  cat build-plan 
+   94  terraform show build-plan 
+   95  terraform destroy -out destroy-plan 
+   96  terraform plan -destroy -out destroy-plan 
+   97  ls
+   98  cat destroy-plan 
+   99  terraform show destroy-plan 
+  100  ls -ltr 
+  101  terraform apply build-plan 
+  102  terraform apply destroy-plan 
+  103  terraform show 
+  104  terraform plan -destroy -out destroy-plan-2 
+  105  ls
+  106  terraform show destroy-plan
+  107  terraform show destroy-plan-2
+  108  terraform apply destroy-plan-2
