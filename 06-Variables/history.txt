@@ -1,0 +1,78 @@
+  347  cp -rf 05-Providers/exp1 06-Variables/
+  348  ls
+  349  cd 06-Variables/
+  350  ls
+  351  cd exp1/
+  352  ls
+  353  vim main.tf 
+  354  ls
+  355  vim varibale.tf 
+  356  ls
+  357  terraform init 
+  358  terraform plan
+  359  ls
+  360  cd ..
+  361  ls
+  362  cp -rf exp1 exp2 
+  363  ls
+  364  cd exp2/
+  365  ls
+  366  terraform plan 
+  367  ls
+  368  mv varibale.tf variable.tf 
+  369  ls
+  370  cat variable.tf 
+  371  terraform plan TF_VAR_my_rg_name="MyRnD-RG" 
+  372  TF_VAR_my_rg_name="MyRnD-RG"  terraform plan 
+  373  TF_VAR_my_rg_name="MyRnD-RG"  terraform plan -out build-plan 
+  374  ls
+  375  terraform show build-plan 
+  376  ls
+  377  cd ..
+  378  ls
+  379  cp -rf exp1 exp3 
+  380  ls
+  381  cd exp3/
+  382  ls
+  383  cat varibale.tf 
+  384  mv varibale.tf variable.tf 
+  385  ls
+  386  vim uat.tfvars
+  387  cp -rf uat.tfvars prod.tfvars 
+  388  vim prod.tfvars 
+  389  terraform plan 
+  390  terraform plan -var-file=uat.tfvars 
+  391  terraform plan -var-file=prod.tfvars 
+  392  ls
+  393  cd ..
+  394  ls
+  395  cp -rf exp3 exp4
+  396  ls
+  397  cd exp4/
+  398  ls
+  399  rm -rf prod.tfvars uat.tfvars 
+  400  ls
+  401  vim variable.tf 
+  402  terraform plan 
+  403  l
+  404  ls
+  405  cat main.tf 
+  406  cat variable.tf 
+  407  terraform plan 
+  408  ls
+  409  cd ..
+  410  ls
+  411  cp -rf exp4 exp5 
+  412  ls
+  413  cd exp5/
+  414  ls
+  415  vim main.tf 
+  416  ls
+  417  vm variable.tf 
+  418  vim variable.tf 
+  419  ls
+  420  terraform plan 
+  421  vim variable.tf 
+  422  terraform plan 
+  423  terraform apply --auto-approve 
+  424  terraform destroy -target azurerm_resource_group.example[0]
