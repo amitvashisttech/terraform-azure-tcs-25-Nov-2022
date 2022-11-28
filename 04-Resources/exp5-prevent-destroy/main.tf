@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "example" {
   location = "eastus"
 
   lifecycle { 
-     prevent_destroy = true 
+     prevent_destroy = false 
   }
 
 }
