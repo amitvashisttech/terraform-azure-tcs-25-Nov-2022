@@ -1,7 +1,7 @@
 variable "my_loc" { 
   description = "My Resource Group Location" 
-  type = list
-  default = ["eastus", "westus", "eastus2"] 
+  type = string 
+  default = "eastus" 
 }
 
 

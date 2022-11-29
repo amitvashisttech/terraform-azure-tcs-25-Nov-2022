@@ -1,8 +1,7 @@
 # Create a resource group
 resource "azurerm_resource_group" "example" {
-  name     = "${var.my_rg_name}-${count.index}"
-  location = var.my_loc[count.index]
-  count    = 2
+  name     = var.my_rg_name
+  location = var.my_loc
 
   tags = { 
    Owner = "Amit Vashist"
