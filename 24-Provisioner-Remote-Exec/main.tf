@@ -192,6 +192,7 @@ provisioner "remote-exec" {
       "sudo apt-get install apache2 -y",
       "sudo service apache2 start",
       "sudo mkdir -p /var/www/html/Terraform-Images", 
+      "sudo chmod 777 /var/www/html/Terraform-Images", 
       "sudo echo 'Hello World' >> /var/www/html/Terraform-Images/hello.html",
     ]
 
