@@ -44,3 +44,20 @@ sudo apt update && sudo apt install vault
 vault --help
 ```
 
+
+
+## Start Vault in a Dev Mode
+```
+nohup vault server -dev > vault_output.txt &
+```
+
+## Export Vault Variables 
+```
+export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+```
+
+## Check Vault Status 
+```
+vault status
+```
