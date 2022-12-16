@@ -61,3 +61,26 @@ export VAULT_TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
 vault status
 ```
+
+
+
+## Let create a our First Secrets 
+```
+vault kv put -mount=secret hello foo=world
+```
+
+## To Read / Get the Secrets
+```
+vault kv get -mount=secret hello
+```
+
+# To Update the existing Secrets
+```
+vault kv put -mount=secret hello foo=world amit=vashist
+```
+
+## To Read / Get the Updated Secrets
+```
+vault kv get -mount=secret hello
+```
+
