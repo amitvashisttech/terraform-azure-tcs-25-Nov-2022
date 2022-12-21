@@ -1,0 +1,77 @@
+## Setup Vault GUI 
+
+### update the /etc/vault.d/vault.hcl
+```
+ui = true
+
+#mlock = true
+disable_mlock = true
+
+storage "raft" {
+  path = "/opt/vault/data"
+  node_id = "node1"
+}
+
+# HTTP listener
+listener "tcp" {
+  address = "0.0.0.0:8200"
+  tls_disable = "true"
+}
+
+api_addr = "http://127.0.0.1:8200"
+cluster_addr = "https://127.0.0.1:8201"
+```
+
+### Now Create a the Storage Dir & Start the Vault 
+``` 
+mkdir -p /opt/vault/data
+nohup vault server -config=/etc/vault.d/vault.hcl > vault_output.txt &
+```
+
+### Enable the Port 8200 & 8201 from Azure NSG 
+
+### Use PublicIP:8200/ui
+
+
+### If you want to use command line also then we have export the variables: 
+
+```
+export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+
+```
+
+### Check Vault Status
+```
+vault status 
+```
+
+
+### Now Basic Vault Commands 
+```
+   28  vault kv put -mount=secret hello foo=world
+   29  vault kv get -mount=secret hello 
+   30  vault kv get -mount=kv hello 
+   31  vault kv put -mount=secret hello foo=world
+   32  vault kv put -mount=secret hello foo=world excited=yes
+   33  vault kv get -mount=secret hello
+   34  vault kv get -mount=secret -field=excited hello
+   35  apt  install jq -y 
+   36  vault kv get -mount=secret -format=json hello | jq -r .data.data.excited
+   37  vault kv get -mount=secret -format=json hello | jq -r .data.data.foo
+   38  vault kv get -mount=secret hello
+   39  vault kv delete -mount=secret hello
+   40  vault kv get -mount=secret hello
+   41  vault kv undelete -mount=secret hello
+   42  vault kv undelete -mount=secret -versions=2 hello
+   43  vault kv get -mount=secret hello
+   44  vault kv put kv/hello target=world
+   45  vault kv put kv/test target=world
+   46  vault kv put tcp/hello target=world
+   47  vault secrets enable -path=tcs kv 
+   48  vault kv put tcp/hello target=world
+   49  vault kv put tcs/hello target=world
+   50  vault secrets list 
+   51  vault kv put tcs/my-secrets value="Pass@word1234!"
+   52  vault kv get tcs/my-secrets
+```
