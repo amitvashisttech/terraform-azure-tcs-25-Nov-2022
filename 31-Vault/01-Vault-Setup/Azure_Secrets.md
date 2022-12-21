@@ -88,3 +88,32 @@ vault policy write apps - <<EOF
  }
  EOF
  ```
+
+#### Create a variable named APPS_TOKEN to capture the token created with the apps policy attached.
+```
+APPS_TOKEN=$(vault token create -policy=apps -field=token)
+```
+
+#### Read credentials from the my-role azure role with the APPS_TOKEN.
+```
+VAULT_TOKEN=$APPS_TOKEN vault read azure/creds/my-role
+```
+
+
+#### Manage leases
+```
+vault list sys/leases/lookup/azure/creds/my-role
+LEASE_ID=$(vault list -format=json sys/leases/lookup/azure/creds/my-role | jq -r ".[0]")
+echo $LEASE_ID
+```
+```
+vault lease renew azure/creds/my-role/$LEASE_ID
+vault list sys/leases/lookup/azure/creds/my-role
+echo $LEASE_ID
+vault list sys/leases/lookup/azure/creds/my-role
+```
+```
+VAULT_TOKEN=$APPS_TOKEN vault read azure/creds/my-role
+vault lease revoke azure/creds/my-role/$LEASE_ID
+vault list sys/leases/lookup/azure/creds/my-role
+```
