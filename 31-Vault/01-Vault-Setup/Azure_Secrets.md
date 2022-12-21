@@ -14,7 +14,7 @@ Directory.AccessAsUser.All    Delegated
 Directory.Read.All            Delegated
 Directory.ReadWrite.All	      Delegated
 Group.Read.All	              Delegated
-Group.ReadWrite.All	          Delegated
-GroupMember.Read.All	        Delegated
-GroupMember.ReadWrite.All	    Delegated
+Group.ReadWrite.All           Delegated
+GroupMember.Read.All          Delegated
+GroupMember.ReadWrite.All     Delegated
 ```
